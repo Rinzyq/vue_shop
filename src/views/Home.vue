@@ -19,7 +19,8 @@
           :unique-opened="true"
           :collapse="isCollapse"
           :collapse-transition="false"
-          :router="true">
+          :router="true"
+          :default-active="activePath">
           <!-- 一级菜单,隐式转换为字符串，：index需要字符串类型 -->
           <el-submenu :index="item.id+''" v-for="item in menuList" :key="item.id">
             <template slot="title">
@@ -27,7 +28,11 @@
               <span>{{item.authName}}</span>
             </template>
             <!-- 二级菜单 -->
-            <el-menu-item :index="'/'+subItem.path" v-for="subItem in item.children" :key="subItem.id">
+            <el-menu-item
+              :index="'/'+subItem.path"
+              v-for="subItem in item.children"
+              :key="subItem.id"
+              @click="saveNavState()">
               <template slot="title">
                 <i class="el-icon-menu"></i>
                 <span>{{subItem.authName}}</span>
@@ -58,11 +63,13 @@ export default {
         102: 'el-icon-document',
         145: 'el-icon-data-analysis'
       },
-      isCollapse: false
+      isCollapse: false,
+      activePath: ''
     }
   },
   created () {
     this.getMenuList()
+    this.saveNavState()
   },
   methods: {
     logout () {
@@ -78,6 +85,10 @@ export default {
     },
     toggleCollapse () {
       this.isCollapse = !this.isCollapse
+    },
+    // 保存链接激活状态
+    saveNavState () {
+      this.activePath = this.$route.path
     }
   }
 }
