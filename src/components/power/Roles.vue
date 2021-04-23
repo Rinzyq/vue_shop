@@ -70,7 +70,7 @@
         <el-button type="primary" @click="addRole">确 定</el-button>
       </span>
     </el-dialog>
-    <!-- 弹出修改用户信息对话框 -->
+    <!-- 弹出修改角色信息对话框 -->
     <el-dialog
       title="修改角色信息"
       :visible.sync="editDialogVisible"

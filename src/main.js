@@ -5,6 +5,9 @@ import store from './store'
 import './plugins/element.js'
 // 导入全局样式表
 import './assets/css/global.css'
+
+import TreeTable from 'vue-table-with-tree-grid'
+
 // 导入axios
 import axios from 'axios'
 axios.defaults.baseURL = 'http://www.ysqorz.top:8888/api/private/v1/'
@@ -16,6 +19,8 @@ axios.interceptors.request.use(config => {
   console.log(err)
 })
 Vue.prototype.$http = axios
+
+Vue.component('tree-table', TreeTable)
 
 Vue.config.productionTip = false
 
