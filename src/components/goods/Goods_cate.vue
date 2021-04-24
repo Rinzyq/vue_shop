@@ -225,7 +225,6 @@ export default {
         const { data: res } = await this.$http.put('categories/' + this.editForm.cat_id, {
           cat_name: this.editForm.cat_name
         })
-        console.log(this.editForm.cat_name)
         if (res.meta.status !== 200) {
           this.$message.error('更新分类信息失败')
           this.editDialogVisible = false
