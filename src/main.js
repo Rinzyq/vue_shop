@@ -8,8 +8,15 @@ import './assets/css/global.css'
 
 import TreeTable from 'vue-table-with-tree-grid'
 
+import VueQuillEditor from 'vue-quill-editor'
+
 // 导入axios
 import axios from 'axios'
+
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+
 axios.defaults.baseURL = 'http://www.ysqorz.top:8888/api/private/v1/'
 // 拦截器拦截请求在请求头添加token字符串后再放行
 axios.interceptors.request.use(config => {
@@ -21,6 +28,8 @@ axios.interceptors.request.use(config => {
 Vue.prototype.$http = axios
 
 Vue.component('tree-table', TreeTable)
+
+Vue.use(VueQuillEditor)
 
 Vue.config.productionTip = false
 
